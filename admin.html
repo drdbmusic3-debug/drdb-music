@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — DRDB Music</title>
+<meta name="description" content="Espace d'administration privé DRDB Music.">
+<meta name="keywords" content="">
+<meta name="author" content="Evann / DRDB Music">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://drdb-music.netlify.app/admin.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Admin — DRDB Music">
+<meta property="og:description" content="Espace d'administration privé DRDB Music.">
+<meta property="og:url" content="https://drdb-music.netlify.app/admin.html">
+<meta property="og:image" content="https://drdb-music.netlify.app/assets/og-image.jpg">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="DRDB Music">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Admin — DRDB Music">
+<meta name="twitter:description" content="Espace d'administration privé DRDB Music.">
+<meta name="twitter:image" content="https://drdb-music.netlify.app/assets/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#000000; --surface:#141414; --surface2:#1F1F1F;
+    --cream:#FAFAFA; --muted:#8C8C8C; --line:#2E2E2E; --line-soft:#1D1D1D;
+    --gold:#D8B463;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--cream);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+  h1,h2{font-family:'Fraunces',serif;margin:0;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  a{color:inherit;}
+
+  header{
+    display:flex;align-items:center;justify-content:space-between;padding:22px 5vw;
+    border-bottom:1px solid var(--line-soft);
+  }
+  .logo{font-family:'Fraunces',serif;font-size:18px;font-weight:700;}
+  header a{font-size:13px;color:var(--muted);text-decoration:none;}
+
+  /* ---- gate (mot de passe) ---- */
+  .gate{
+    min-height:70vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    padding:40px 5vw;text-align:center;
+  }
+  .gate h1{font-size:26px;margin-bottom:10px;}
+  .gate p{color:var(--muted);font-size:14px;max-width:380px;margin:0 0 22px;}
+  .gate input{
+    background:var(--surface);border:1px solid var(--line);border-radius:10px;
+    padding:13px 16px;color:var(--cream);font-size:14px;width:280px;max-width:80vw;text-align:center;
+  }
+  .gate button{
+    margin-top:14px;background:var(--gold);color:#1a1400;border:none;padding:12px 28px;
+    border-radius:100px;font-weight:700;cursor:pointer;font-size:14px;
+  }
+  .gate .err{color:#e07a6b;font-size:13px;margin-top:12px;min-height:18px;}
+
+  /* ---- dashboard ---- */
+  #dashboard{display:none;padding:40px 5vw 80px;}
+  .dash-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:14px;margin-bottom:30px;}
+  .dash-head h1{font-size:28px;}
+  .dash-head p{color:var(--muted);font-size:13.5px;margin-top:6px;}
+  .refresh-btn{
+    background:var(--surface2);border:1px solid var(--line);color:var(--cream);
+    padding:9px 18px;border-radius:100px;font-size:13px;cursor:pointer;
+  }
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:36px;}
+  .card{
+    background:var(--surface);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:22px;
+  }
+  .card .num{font-family:'Fraunces',serif;font-size:34px;font-weight:700;color:var(--gold);}
+  .card .label{color:var(--muted);font-size:12.5px;margin-top:6px;letter-spacing:0.3px;}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  @media(max-width:900px){ .grid2{grid-template-columns:1fr;} }
+
+  .panel{background:var(--surface);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:22px;margin-bottom:24px;}
+  .panel h2{font-size:16px;margin-bottom:16px;}
+
+  table{width:100%;border-collapse:collapse;font-size:13px;}
+  th{text-align:left;color:var(--muted);font-weight:600;padding:8px 6px;border-bottom:1px solid var(--line-soft);font-size:12px;text-transform:uppercase;letter-spacing:0.5px;}
+  td{padding:8px 6px;border-bottom:1px solid var(--line-soft);color:#D6D2CB;}
+  tr:last-child td{border-bottom:none;}
+  .badge{
+    display:inline-block;padding:2px 9px;border-radius:100px;font-size:11px;font-weight:600;
+    background:rgba(216,180,99,0.12);color:var(--gold);
+  }
+  .empty{color:var(--muted);font-size:13px;padding:12px 0;}
+
+  .upload-form{display:flex;flex-direction:column;gap:4px;max-width:420px;}
+  .upload-form label{font-size:12px;color:var(--muted);margin-top:12px;}
+  .upload-form input, .upload-form select{
+    background:var(--surface2);border:1px solid var(--line);border-radius:8px;
+    padding:11px 14px;color:var(--cream);font-size:14px;font-family:'Inter',sans-serif;
+  }
+  .upload-form button{
+    margin-top:18px;background:var(--gold);color:#1a1400;border:none;padding:12px;
+    border-radius:100px;font-weight:700;cursor:pointer;font-size:14px;
+  }
+  .upload-form button:disabled{opacity:0.5;cursor:not-allowed;}
+  .up-ok{color:#8fd08c;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">DRDB MUSIC — Admin</div>
+  <a href="index.html">← Retour au site</a>
+</header>
+
+<div class="gate" id="gate">
+  <h1>Espace Admin</h1>
+  <p>Entre ta clé admin pour voir les statistiques du site (téléchargements, clics, ventes, abonnements, messages).</p>
+  <input type="password" id="keyInput" placeholder="Clé admin" onkeydown="if(event.key==='Enter') unlock()">
+  <br>
+  <button onclick="unlock()">Voir les statistiques</button>
+  <div class="err" id="gateErr"></div>
+</div>
+
+<div id="dashboard">
+  <div class="dash-head">
+    <div>
+      <h1>Tableau de bord</h1>
+      <p id="lastUpdated"></p>
+    </div>
+    <button class="refresh-btn" onclick="loadStats()">↻ Actualiser</button>
+  </div>
+
+  <div class="cards" id="cardsRow"></div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h2>Toutes les actions (par type)</h2>
+      <table id="countsTable"><thead><tr><th>Action</th><th style="text-align:right;">Nombre</th></tr></thead><tbody></tbody></table>
+    </div>
+    <div class="panel">
+      <h2>Activité récente</h2>
+      <table id="recentTable"><thead><tr><th>Action</th><th>Détail</th><th>Quand</th></tr></thead><tbody></tbody></table>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Candidatures Artistes (Portail Distribution)</h2>
+    <table id="applicationsTable">
+      <thead><tr><th>Artiste</th><th>Contact</th><th>Genre</th><th>Liens</th><th>Message</th><th>Reçu le</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <h2>Inscrits aux notifications (<span id="notifyCount">0</span>)</h2>
+    <p style="color:var(--muted);font-size:13px;margin:-6px 0 14px;">
+      Liste des emails inscrits pour être notifiés des nouveautés. L'envoi des emails n'est pas encore
+      automatisé — copie cette liste pour envoyer toi-même un message (ou dis-moi si tu veux qu'on
+      automatise l'envoi avec un service d'emailing gratuit).
+    </p>
+    <table id="notifyTable">
+      <thead><tr><th>Email</th><th>Inscrit le</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <h2>Ajouter un titre manuellement (sans passer par GitHub)</h2>
+    <p style="color:var(--muted);font-size:13px;margin:-6px 0 18px;">
+      ⚠️ Important : l'hébergement gratuit de Render efface les fichiers du serveur à chaque redémarrage
+      (veille, mise à jour...). Un titre ajouté ici peut donc disparaître après un moment. Pour un
+      stockage permanent, il faudra passer à un disque payant sur Render — en attendant, vérifie de temps
+      en temps que les titres ajoutés ici sont toujours dans le catalogue.
+    </p>
+    <div class="upload-form">
+      <label>Titre de la chanson</label>
+      <input type="text" id="up-title" placeholder="Ex: NOUVEAU TITRE">
+      <label>Catégorie</label>
+      <select id="up-tier">
+        <option value="free">Gratuit (catalogue libre)</option>
+        <option value="exclusive">Exclusivité (payant)</option>
+      </select>
+      <label>Prix (FCFA) — laisse 0 si gratuit</label>
+      <input type="number" id="up-price" value="500">
+      <label>Fichier audio (mp3/wav)</label>
+      <input type="file" id="up-audio" accept="audio/*">
+      <label>Pochette (image)</label>
+      <input type="file" id="up-cover" accept="image/*">
+      <label style="margin-top:16px;"><input type="checkbox" id="up-notify" checked style="width:auto;margin-right:8px;"> Notifier les inscrits de cette sortie par email</label>
+      <button onclick="uploadSong()" id="up-btn">Ajouter le titre</button>
+      <div class="err" id="up-status" style="text-align:left;min-height:0;"></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Envoyer une annonce à tous les inscrits</h2>
+    <p style="color:var(--muted);font-size:13px;margin:-6px 0 18px;">
+      Pour une actualité qui n'est pas une nouvelle chanson (un concert, une news...). Nécessite que
+      Brevo soit configuré sur Render (BREVO_API_KEY, BREVO_SENDER_EMAIL).
+    </p>
+    <div class="upload-form">
+      <label>Sujet</label>
+      <input type="text" id="bc-subject" placeholder="Ex: Concert live ce samedi !">
+      <label>Message</label>
+      <textarea id="bc-message" rows="4" style="background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:11px 14px;color:var(--cream);font-size:14px;font-family:'Inter',sans-serif;resize:vertical;" placeholder="Ton message..."></textarea>
+      <button onclick="sendBroadcast()" id="bc-btn">Envoyer à tous les inscrits</button>
+      <div class="err" id="bc-status" style="text-align:left;min-height:0;"></div>
+    </div>
+  </div>
+  <div class="panel">
+    <h2>Section Live (YouTube / Facebook)</h2>
+    <p style="color:var(--muted);font-size:13px;margin:-6px 0 18px;">
+      Diffuse ton live sur YouTube ou Facebook comme d'habitude, puis colle son lien ici pour qu'il
+      apparaisse automatiquement dans la Section Live du site.
+    </p>
+    <div class="upload-form">
+      <label><input type="checkbox" id="live-on" style="width:auto;margin-right:8px;"> Live en cours actuellement</label>
+
+      <label>Plateforme</label>
+      <select id="live-platform" onchange="toggleLiveFields()">
+        <option value="youtube">YouTube</option>
+        <option value="facebook">Facebook</option>
+        <option value="tiktok">TikTok</option>
+      </select>
+
+      <div id="yt-field">
+        <label>ID de la vidéo YouTube (la partie après "watch?v=" dans le lien du live)</label>
+        <input type="text" id="live-videoid" placeholder="Ex: dQw4w9WgXcQ">
+      </div>
+      <div id="fb-field" style="display:none;">
+        <label>Lien complet de la vidéo Live Facebook</label>
+        <input type="text" id="live-fburl" placeholder="https://www.facebook.com/.../videos/...">
+      </div>
+      <div id="tt-field" style="display:none;">
+        <label>Lien complet de ton live TikTok (ex: https://www.tiktok.com/@evannmonbb/live)</label>
+        <input type="text" id="live-ttlurl" placeholder="https://www.tiktok.com/@evannmonbb/live">
+      </div>
+
+      <label><input type="checkbox" id="live-ad-on" style="width:auto;margin-right:8px;"> Diffuser une pub avant le live</label>
+
+      <label>Vidéo publicitaire (mp4)</label>
+      <input type="file" id="live-ad-file" accept="video/*">
+      <button onclick="uploadAd()" id="ad-upload-btn" style="margin-top:10px;">Uploader la pub</button>
+
+      <button onclick="saveLiveConfig()" id="live-save-btn">Enregistrer la configuration Live</button>
+      <div class="err" id="live-status" style="text-align:left;min-height:0;"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const API_BASE = "https://drdb-backend-gakr.onrender.com/api";
+let ADMIN_KEY = sessionStorage.getItem('drdb_admin_key') || '';
+
+const EVENT_LABELS = {
+  checkout_started: "Achat démarré",
+  subscribe_started: "Abonnement démarré",
+  payment_confirmed: "Paiement confirmé",
+  payment_declined: "Paiement refusé",
+  subscription_activated: "Abonnement activé",
+  download: "Téléchargement",
+  stream_play: "Écoute en streaming",
+  wall_message: "Message Mur des Fans",
+  whatsapp_order_click: "Commande boutique (WhatsApp)",
+  preview_play: "Écoute d'un extrait",
+  page_view: "Vue de page",
+  live_view: "Vue du Live",
+  live_ad_view: "Vue de la pub (Live)",
+  live_config_updated: "Configuration Live modifiée",
+  ad_uploaded: "Pub Live mise à jour",
+  song_uploaded: "Titre ajouté (admin)",
+  artist_application: "Candidature artiste",
+  notify_signup: "Inscription notifications",
+  notify_broadcast_sent: "Annonce envoyée aux inscrits"
+};
+function labelFor(type){ return EVENT_LABELS[type] || type; }
+
+function metaSummary(type, meta){
+  if(!meta) return '';
+  if(type==='download' || type==='stream_play') return meta.title || meta.songId || '';
+  if(type==='checkout_started') return (meta.songIds||[]).join(', ') + (meta.amount ? ` — ${meta.amount} FCFA` : '');
+  if(type==='subscribe_started' || type==='subscription_activated') return meta.amount ? `${meta.amount} FCFA` : (meta.email || '');
+  if(type==='wall_message') return meta.name || '';
+  if(type==='whatsapp_order_click') return `${meta.item||''} ${meta.color||''} — ${meta.price||''}`;
+  if(type==='page_view') return meta.page || '';
+  return Object.values(meta).slice(0,2).join(' · ');
+}
+
+async function unlock(){
+  const key = document.getElementById('keyInput').value.trim();
+  if(!key){ return; }
+  ADMIN_KEY = key;
+  const ok = await loadStats();
+  if(ok){
+    sessionStorage.setItem('drdb_admin_key', key);
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+  }
+}
+
+async function loadStats(){
+  const err = document.getElementById('gateErr');
+  err.textContent = '';
+  try{
+    const res = await fetch(`${API_BASE}/stats?key=${encodeURIComponent(ADMIN_KEY)}`);
+    if(res.status === 401){
+      err.textContent = 'Clé admin incorrecte.';
+      return false;
+    }
+    if(!res.ok) throw new Error('Réponse serveur invalide.');
+    const stats = await res.json();
+    renderStats(stats);
+    loadApplications();
+    loadLiveConfig();
+    loadNotifySubscribers();
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+    return true;
+  }catch(e){
+    err.textContent = "Impossible de joindre le serveur (il se réveille peut-être — réessaie dans une minute).";
+    return false;
+  }
+}
+
+async function loadApplications(){
+  try{
+    const res = await fetch(`${API_BASE}/artist-applications?key=${encodeURIComponent(ADMIN_KEY)}`);
+    if(!res.ok) return;
+    const list = await res.json();
+    const body = document.querySelector('#applicationsTable tbody');
+    body.innerHTML = list.length ? list.map(a => `
+      <tr>
+        <td><strong>${a.artistName}</strong>${a.realName ? '<br><span class="mono" style="color:var(--muted);font-size:11px;">'+a.realName+'</span>' : ''}</td>
+        <td>${a.email}${a.phone ? '<br>'+a.phone : ''}</td>
+        <td>${a.genre || '—'}</td>
+        <td style="max-width:180px;word-break:break-word;">${a.links || '—'}</td>
+        <td style="max-width:260px;">${a.message}</td>
+        <td class="mono" style="white-space:nowrap;">${new Date(a.createdAt).toLocaleString('fr-FR')}</td>
+      </tr>`).join('') : `<tr><td colspan="6" class="empty">Aucune candidature reçue pour l'instant.</td></tr>`;
+  }catch(e){ /* silencieux */ }
+}
+
+async function loadNotifySubscribers(){
+  try{
+    const res = await fetch(`${API_BASE}/admin/notify-subscribers?key=${encodeURIComponent(ADMIN_KEY)}`);
+    if(!res.ok) return;
+    const list = await res.json();
+    document.getElementById('notifyCount').textContent = list.length;
+    const body = document.querySelector('#notifyTable tbody');
+    body.innerHTML = list.length ? list.slice().reverse().map(s => `
+      <tr>
+        <td>${s.email}</td>
+        <td class="mono" style="white-space:nowrap;">${new Date(s.createdAt).toLocaleString('fr-FR')}</td>
+      </tr>`).join('') : `<tr><td colspan="2" class="empty">Aucun inscrit pour l'instant.</td></tr>`;
+  }catch(e){ /* silencieux */ }
+}
+
+async function sendBroadcast(){
+  const subject = document.getElementById('bc-subject').value.trim();
+  const message = document.getElementById('bc-message').value.trim();
+  const status = document.getElementById('bc-status');
+  const btn = document.getElementById('bc-btn');
+
+  status.className = 'err'; status.textContent = '';
+  if(!subject || !message){
+    status.textContent = 'Merci de remplir le sujet et le message.';
+    return;
+  }
+
+  btn.disabled = true; btn.textContent = 'Envoi en cours…';
+  try{
+    const res = await fetch(`${API_BASE}/admin/notify-broadcast`, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ key: ADMIN_KEY, subject, message })
+    });
+    const data = await res.json();
+    if(!res.ok) throw new Error(data.error || 'Échec de l\'envoi.');
+    status.className = 'up-ok';
+    status.textContent = `✓ Envoyé à ${data.sent} inscrit(s)${data.failed.length ? `, ${data.failed.length} échec(s)` : ''}.`;
+    document.getElementById('bc-subject').value = '';
+    document.getElementById('bc-message').value = '';
+  }catch(e){
+    status.className = 'err';
+    status.textContent = 'Erreur : ' + e.message;
+  }finally{
+    btn.disabled = false; btn.textContent = 'Envoyer à tous les inscrits';
+  }
+}
+
+function renderStats(stats){
+  document.getElementById('lastUpdated').textContent = 'Mis à jour : ' + new Date().toLocaleString('fr-FR');
+
+  const counts = stats.counts || {};
+  const cards = [
+    { num: counts.download || 0, label: 'Téléchargements' },
+    { num: counts.payment_confirmed || 0, label: 'Paiements confirmés' },
+    { num: counts.subscription_activated || 0, label: 'Abonnements activés' },
+    { num: stats.wallMessagesCount || 0, label: 'Messages Mur des Fans' },
+    { num: stats.totalEvents || 0, label: 'Actions totales enregistrées' },
+  ];
+  document.getElementById('cardsRow').innerHTML = cards.map(c => `
+    <div class="card"><div class="num mono">${c.num}</div><div class="label">${c.label}</div></div>
+  `).join('');
+
+  const countsBody = document.querySelector('#countsTable tbody');
+  const entries = Object.entries(counts).sort((a,b)=>b[1]-a[1]);
+  countsBody.innerHTML = entries.length ? entries.map(([type,n]) => `
+    <tr><td><span class="badge">${labelFor(type)}</span></td><td style="text-align:right;" class="mono">${n}</td></tr>
+  `).join('') : `<tr><td colspan="2" class="empty">Aucune action enregistrée pour l'instant.</td></tr>`;
+
+  const recentBody = document.querySelector('#recentTable tbody');
+  const recent = stats.recent || [];
+  recentBody.innerHTML = recent.length ? recent.map(e => `
+    <tr>
+      <td>${labelFor(e.type)}</td>
+      <td>${metaSummary(e.type, e.meta)}</td>
+      <td class="mono" style="white-space:nowrap;">${new Date(e.at).toLocaleString('fr-FR')}</td>
+    </tr>
+  `).join('') : `<tr><td colspan="3" class="empty">Rien à afficher pour l'instant.</td></tr>`;
+}
+
+if(ADMIN_KEY){ loadStats(); }
+
+async function uploadSong(){
+  const title = document.getElementById('up-title').value.trim();
+  const tier = document.getElementById('up-tier').value;
+  const price = document.getElementById('up-price').value;
+  const audioFile = document.getElementById('up-audio').files[0];
+  const coverFile = document.getElementById('up-cover').files[0];
+  const status = document.getElementById('up-status');
+  const btn = document.getElementById('up-btn');
+
+  status.className = 'err';
+  if(!title || !audioFile || !coverFile){
+    status.textContent = 'Merci de remplir le titre, le fichier audio et la pochette.';
+    return;
+  }
+
+  const form = new FormData();
+  form.append('key', ADMIN_KEY);
+  form.append('title', title);
+  form.append('tier', tier);
+  form.append('price', price);
+  form.append('audio', audioFile);
+  form.append('cover', coverFile);
+  form.append('notify', document.getElementById('up-notify').checked ? 'true' : 'false');
+
+  btn.disabled = true; btn.textContent = 'Envoi en cours… (peut prendre 1-2 min)';
+  status.textContent = '';
+
+  try{
+    const res = await fetch(`${API_BASE}/admin/upload-song`, { method: 'POST', body: form });
+    const data = await res.json();
+    if(!res.ok) throw new Error(data.error || 'Échec de l\'envoi.');
+
+    status.className = 'up-ok';
+    status.textContent = `✓ "${data.song.title}" ajouté avec succès au catalogue (${data.song.tier === 'free' ? 'gratuit' : 'exclusivité'}).`;
+    document.getElementById('up-title').value = '';
+    document.getElementById('up-audio').value = '';
+    document.getElementById('up-cover').value = '';
+  }catch(e){
+    status.className = 'err';
+    status.textContent = "Erreur : " + e.message;
+  }finally{
+    btn.disabled = false; btn.textContent = 'Ajouter le titre';
+  }
+}
+
+/* ---------------- Section Live ---------------- */
+function toggleLiveFields(){
+  const platform = document.getElementById('live-platform').value;
+  document.getElementById('yt-field').style.display = platform === 'youtube' ? 'block' : 'none';
+  document.getElementById('fb-field').style.display = platform === 'facebook' ? 'block' : 'none';
+  document.getElementById('tt-field').style.display = platform === 'tiktok' ? 'block' : 'none';
+}
+
+async function loadLiveConfig(){
+  try{
+    const res = await fetch(`${API_BASE}/live`);
+    const cfg = await res.json();
+    document.getElementById('live-on').checked = !!cfg.isLive;
+    document.getElementById('live-platform').value = cfg.platform || 'youtube';
+    document.getElementById('live-videoid').value = cfg.videoId || '';
+    document.getElementById('live-fburl').value = cfg.facebookUrl || '';
+    document.getElementById('live-ttlurl').value = cfg.tiktokUrl || '';
+    document.getElementById('live-ad-on').checked = !!cfg.adEnabled;
+    toggleLiveFields();
+  }catch(e){ /* silencieux */ }
+}
+
+async function saveLiveConfig(){
+  const status = document.getElementById('live-status');
+  const btn = document.getElementById('live-save-btn');
+  status.className = 'err'; status.textContent = '';
+  btn.disabled = true; btn.textContent = 'Enregistrement…';
+
+  try{
+    const res = await fetch(`${API_BASE}/admin/live`, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        key: ADMIN_KEY,
+        isLive: document.getElementById('live-on').checked,
+        platform: document.getElementById('live-platform').value,
+        videoId: document.getElementById('live-videoid').value.trim(),
+        facebookUrl: document.getElementById('live-fburl').value.trim(),
+        tiktokUrl: document.getElementById('live-ttlurl').value.trim(),
+        adEnabled: document.getElementById('live-ad-on').checked
+      })
+    });
+    const data = await res.json();
+    if(!res.ok) throw new Error(data.error || 'Échec de l\'enregistrement.');
+    status.className = 'up-ok';
+    status.textContent = '✓ Configuration Live enregistrée. Visible immédiatement sur /live.html.';
+  }catch(e){
+    status.className = 'err';
+    status.textContent = 'Erreur : ' + e.message;
+  }finally{
+    btn.disabled = false; btn.textContent = 'Enregistrer la configuration Live';
+  }
+}
+
+async function uploadAd(){
+  const file = document.getElementById('live-ad-file').files[0];
+  const status = document.getElementById('live-status');
+  const btn = document.getElementById('ad-upload-btn');
+  status.className = 'err'; status.textContent = '';
+  if(!file){ status.textContent = 'Choisis un fichier vidéo pour la pub.'; return; }
+
+  const form = new FormData();
+  form.append('key', ADMIN_KEY);
+  form.append('ad', file);
+
+  btn.disabled = true; btn.textContent = 'Envoi en cours…';
+  try{
+    const res = await fetch(`${API_BASE}/admin/upload-ad`, { method: 'POST', body: form });
+    const data = await res.json();
+    if(!res.ok) throw new Error(data.error || 'Échec de l\'envoi.');
+    status.className = 'up-ok';
+    status.textContent = '✓ Vidéo publicitaire mise à jour.';
+  }catch(e){
+    status.className = 'err';
+    status.textContent = 'Erreur : ' + e.message;
+  }finally{
+    btn.disabled = false; btn.textContent = 'Uploader la pub';
+  }
+}
+
+
+</script>
+</body>
+</html>

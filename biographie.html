@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biographie d'Evann — Artiste béninois créateur de l'afro love | DRDB Music</title>
+<meta name="description" content="Découvrez le parcours d'Evann, auteur-compositeur-interprète béninois d'Abomey, révélé par le titre "Un Oui" et créateur du concept musical afro love.">
+<meta name="keywords" content="Evann biographie, artiste béninois, chanteur Abomey, afro love, musique béninoise, DRDB">
+<meta name="author" content="Evann / DRDB Music">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://drdb-music.netlify.app/biographie.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Biographie d'Evann — Artiste béninois créateur de l'afro love | DRDB Music">
+<meta property="og:description" content="Découvrez le parcours d'Evann, auteur-compositeur-interprète béninois d'Abomey, révélé par le titre "Un Oui" et créateur du concept musical afro love.">
+<meta property="og:url" content="https://drdb-music.netlify.app/biographie.html">
+<meta property="og:image" content="https://drdb-music.netlify.app/assets/og-image.jpg">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="DRDB Music">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Biographie d'Evann — Artiste béninois créateur de l'afro love | DRDB Music">
+<meta name="twitter:description" content="Découvrez le parcours d'Evann, auteur-compositeur-interprète béninois d'Abomey, révélé par le titre "Un Oui" et créateur du concept musical afro love.">
+<meta name="twitter:image" content="https://drdb-music.netlify.app/assets/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#000000;
+    --surface:#0D0D0D;
+    --line:#2E2E2E;
+    --line-soft:#1D1D1D;
+    --text:#FAFAFA;
+    --muted:#8F8F8F;
+    --muted2:#5C5C5C;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--bg);color:var(--text);
+    font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,blockquote{font-family:'Fraunces',serif;margin:0;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important;}
+  }
+
+  /* ---------- header ---------- */
+  header{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px 6vw;position:sticky;top:0;z-index:30;
+    backdrop-filter:blur(10px);background:rgba(0,0,0,0.75);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-size:18px;font-weight:700;white-space:nowrap;}
+  .logo img{height:34px;width:34px;border-radius:50%;object-fit:cover;}
+  nav a{text-decoration:none;color:var(--muted);font-size:13px;margin-left:24px;letter-spacing:0.3px;transition:color .2s;}
+  nav a:hover{color:var(--text);}
+  nav a.current{color:var(--text);border-bottom:1px solid var(--text);padding-bottom:2px;}
+
+  /* ---------- scroll spine (signature element) ---------- */
+  .spine-wrap{
+    position:fixed;left:calc(6vw + 2px);top:0;bottom:0;width:1px;z-index:5;
+    display:none;
+  }
+  @media(min-width:900px){ .spine-wrap{display:block;} }
+  .spine-track{position:absolute;inset:0;background:var(--line-soft);}
+  .spine-fill{
+    position:absolute;top:0;left:0;width:100%;height:0%;
+    background:linear-gradient(180deg,var(--text),var(--muted2));
+    transition:height .1s linear;
+  }
+
+  main{max-width:1180px;margin:0 auto;padding:0 6vw;}
+
+  /* ---------- hero ---------- */
+  .bio-hero{
+    padding:110px 0 70px;position:relative;
+  }
+  .bio-hero .arc{
+    position:absolute;top:-60px;right:-120px;width:520px;height:520px;
+    border:1px solid var(--line);border-radius:50%;
+    opacity:0.5;
+  }
+  .bio-hero .arc.small{width:380px;height:380px;top:0;right:-80px;border-color:var(--line-soft);}
+  .eyebrow{
+    display:block;color:var(--muted);text-transform:uppercase;letter-spacing:2.5px;
+    font-size:12px;font-weight:600;margin-bottom:26px;
+  }
+  .hero-title{
+    font-size:clamp(44px,8vw,96px);line-height:1;font-weight:600;
+    max-width:900px;position:relative;z-index:1;
+  }
+  .hero-title .word{
+    display:inline-block;opacity:0;transform:translateY(0.4em);
+    animation:riseIn .9s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  @keyframes riseIn{to{opacity:1;transform:translateY(0);}}
+  .hero-lede{
+    max-width:640px;color:var(--muted);font-size:17px;line-height:1.75;margin-top:34px;
+    opacity:0;animation:fadeIn 1s ease forwards;animation-delay:1.1s;
+  }
+  @keyframes fadeIn{to{opacity:1;}}
+  .hero-lede strong{color:var(--text);font-weight:600;}
+
+  /* ---------- reveal sections ---------- */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  section.chapter{
+    padding:78px 0;border-top:1px solid var(--line-soft);
+    display:grid;grid-template-columns:180px 1fr;gap:50px;
+  }
+  @media(max-width:760px){ section.chapter{grid-template-columns:1fr;gap:22px;} }
+  .chapter-label{
+    color:var(--muted2);font-size:12px;letter-spacing:2px;text-transform:uppercase;
+    padding-top:6px;
+  }
+  .chapter-body h2{
+    font-size:clamp(28px,3.4vw,42px);font-weight:600;margin-bottom:22px;line-height:1.15;
+  }
+  .chapter-body p{
+    color:#D6D2CB;font-size:16.5px;line-height:1.85;max-width:760px;margin:0 0 18px;
+  }
+  .chapter-body p:last-child{margin-bottom:0;}
+
+  /* pull quote */
+  blockquote.pull{
+    font-size:clamp(22px,2.6vw,32px);font-weight:500;font-style:italic;
+    line-height:1.4;max-width:680px;margin:30px 0;padding-left:26px;
+    border-left:1px solid var(--line);color:var(--text);
+  }
+
+  /* two-paths contrast block (justified: content is literally two options) */
+  .two-paths{
+    display:grid;grid-template-columns:1fr 1fr;gap:0;margin:34px 0 8px;
+    border:1px solid var(--line-soft);border-radius:2px;overflow:hidden;
+  }
+  @media(max-width:640px){ .two-paths{grid-template-columns:1fr;} }
+  .path{padding:26px 28px;}
+  .path + .path{border-left:1px solid var(--line-soft);}
+  @media(max-width:640px){ .path + .path{border-left:none;border-top:1px solid var(--line-soft);} }
+  .path .tag{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted2);}
+  .path.chosen{background:var(--surface);}
+  .path.chosen .tag{color:var(--text);}
+  .path p{font-size:15px;color:var(--muted);margin-top:10px;line-height:1.6;}
+  .path.chosen p{color:#D6D2CB;}
+
+  /* influences / collab chips */
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px;}
+  .chip{
+    border:1px solid var(--line);border-radius:100px;padding:7px 16px;
+    font-size:13px;color:var(--muted);
+  }
+
+  /* ---------- closing ---------- */
+  .closing{
+    padding:110px 0 90px;text-align:center;border-top:1px solid var(--line-soft);
+    position:relative;
+  }
+  .closing .ring{
+    width:120px;height:120px;border:1px solid var(--line);border-radius:50%;
+    margin:0 auto 34px;position:relative;
+  }
+  .closing .ring::before{
+    content:'';position:absolute;inset:16px;border:1px solid var(--line-soft);border-radius:50%;
+  }
+  .closing h2{
+    font-size:clamp(26px,3.5vw,40px);font-weight:600;max-width:720px;margin:0 auto;line-height:1.35;
+  }
+  .closing .slogan{
+    margin-top:22px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;font-size:12px;font-weight:600;
+  }
+
+  footer{
+    padding:34px 6vw;border-top:1px solid var(--line-soft);
+    color:var(--muted2);font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+    background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%3Cg%20fill%3D%22%23E23B3B%22%20opacity%3D%220.8%22%3E%0A%20%20%3Ccircle%20cx%3D%2214%22%20cy%3D%2214%22%20r%3D%224%22/%3E%0A%20%20%3Ccircle%20cx%3D%2220%22%20cy%3D%2211%22%20r%3D%224%22/%3E%0A%20%20%3Ccircle%20cx%3D%2223%22%20cy%3D%2217%22%20r%3D%224%22/%3E%0A%20%20%3Ccircle%20cx%3D%2217%22%20cy%3D%2220%22%20r%3D%224%22/%3E%0A%20%20%3Ccircle%20cx%3D%2211%22%20cy%3D%2217%22%20r%3D%224%22/%3E%0A%20%20%3Ccircle%20cx%3D%2217%22%20cy%3D%2215%22%20r%3D%223%22%20fill%3D%22%238C1616%22/%3E%0A%3C/g%3E%0A%3Cg%20fill%3D%22%23F5F5F5%22%20opacity%3D%220.75%22%3E%0A%20%20%3Ccircle%20cx%3D%2258%22%20cy%3D%2255%22%20r%3D%223.4%22/%3E%0A%20%20%3Ccircle%20cx%3D%2263%22%20cy%3D%2252%22%20r%3D%223.4%22/%3E%0A%20%20%3Ccircle%20cx%3D%2266%22%20cy%3D%2257.5%22%20r%3D%223.4%22/%3E%0A%20%20%3Ccircle%20cx%3D%2261%22%20cy%3D%2260.5%22%20r%3D%223.4%22/%3E%0A%20%20%3Ccircle%20cx%3D%2255%22%20cy%3D%2257.5%22%20r%3D%223.4%22/%3E%0A%20%20%3Ccircle%20cx%3D%2261%22%20cy%3D%2256%22%20r%3D%222.4%22%20fill%3D%22%23C9C9C9%22/%3E%0A%3C/g%3E%0A%3C/svg%3E");background-repeat:repeat;
+  }
+
+  /* ---------- social floating bar ---------- */
+  .social-float{
+    position:fixed;right:16px;top:50%;transform:translateY(-50%);z-index:150;
+    display:flex;flex-direction:column;gap:12px;
+  }
+  .social-float a{
+    width:44px;height:44px;border-radius:50%;
+    background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;text-decoration:none;transition:transform .2s, background .2s, border-color .2s;
+    backdrop-filter:blur(6px);
+  }
+  .social-float a svg{width:20px;height:20px;fill:currentColor;}
+  .social-float a:hover{transform:scale(1.12);border-color:transparent;}
+  .social-float a.fb:hover{background:#1877F2;}
+  .social-float a.tt:hover{background:#010101;box-shadow:0 0 0 2px #25F4EE, 0 0 0 4px #FE2C55;}
+  .social-float a.yt:hover{background:#FF0000;}
+  .social-float a.wa:hover{background:#25D366;}
+  @media(max-width:640px){
+    .social-float{
+      right:auto;left:0;top:auto;bottom:0;transform:none;
+      flex-direction:row;width:100%;justify-content:center;gap:10px;
+      padding:10px 0;background:rgba(0,0,0,0.85);backdrop-filter:blur(10px);
+      border-top:1px solid rgba(255,255,255,0.08);
+    }
+    .social-float a{width:38px;height:38px;}
+    .social-float a svg{width:17px;height:17px;}
+  }
+
+  /* ---- yellow accents + spotlights + sparkles ---- */
+  :root{ --neon: #D8B463; }
+  nav a{ color:var(--neon) !important; opacity:0.85; }
+  @keyframes textShimmer{
+    0%,100%{ text-shadow:0 0 1px #fff, 0 0 2px rgba(255,255,255,0.6), 0 0 8px rgba(193,80,46,0.35); }
+    50%{ text-shadow:0 0 1px #fff, 0 0 3px rgba(255,255,255,0.95), 0 0 16px rgba(193,80,46,0.65); }
+  }
+  nav a{ animation:textShimmer 3.4s ease-in-out infinite; }
+  .mobile-nav a{ animation:textShimmer 3.4s ease-in-out infinite; }
+
+  nav a:hover, nav a.current{ opacity:1; text-shadow:0 0 2px #fff, 0 0 10px rgba(193,80,46,0.7); }
+  .spotlight{
+    position:fixed;top:-10%;width:260px;height:130%;z-index:0;pointer-events:none;
+    background:conic-gradient(from 90deg at 50% 0%, transparent 0deg, rgba(255,255,255,0.16) 12deg, transparent 26deg);
+    transform-origin:top center;mix-blend-mode:screen;
+    animation:spotSweep 7s ease-in-out infinite;
+  }
+  .spotlight.s2{ right:8%; left:auto; animation-delay:-3.5s;
+    background:conic-gradient(from 90deg at 50% 0%, transparent 0deg, rgba(255,255,255,0.12) 12deg, transparent 26deg); }
+  .spotlight.s1{ left:8%; }
+  @keyframes spotSweep{
+    0%,100%{transform:rotate(-28deg);}
+    50%{transform:rotate(28deg);}
+  }
+  @media(max-width:760px){ .spotlight{display:none;} }
+  .sparkle{
+    position:absolute;width:3px;height:3px;border-radius:50%;
+    background:var(--neon);box-shadow:0 0 8px 2px rgba(255,255,255,0.55);
+    opacity:0;pointer-events:none;z-index:1;
+    animation:sparkleTwinkle 2.6s ease-in-out infinite;
+  }
+  @keyframes sparkleTwinkle{
+    0%,100%{opacity:0;transform:scale(0.4);}
+    50%{opacity:1;transform:scale(1.3);}
+  }
+
+  .hero-title{ color:var(--neon) !important; text-shadow:0 0 2px #fff, 0 0 3px rgba(255,255,255,0.9), 0 0 14px rgba(193,80,46,0.45); animation:textShimmer 3.4s ease-in-out infinite; }
+  .chapter-body h2{ color:var(--neon); }
+  .closing h2{ color:var(--neon); text-shadow:0 0 2px #fff, 0 0 3px rgba(255,255,255,0.9), 0 0 14px rgba(193,80,46,0.45); animation:textShimmer 3.4s ease-in-out infinite; }
+  .site-footer .footer-top{
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px;
+    padding-bottom:24px;margin-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .footer-brand{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-weight:700;font-size:17px;}
+  .footer-brand img{width:30px;height:30px;border-radius:50%;object-fit:cover;}
+  .footer-socials{display:flex;gap:10px;}
+  .footer-socials a{
+    width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.07);
+    border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;
+    color:inherit;text-decoration:none;transition:transform .2s,background .2s;
+  }
+  .footer-socials a svg{width:16px;height:16px;fill:currentColor;}
+  .footer-socials a:hover{transform:scale(1.12);background:var(--gold);color:#1a1400;}
+  .footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12.5px;}
+  .footer-bottom a{color:inherit;text-decoration:underline;}
+</style>
+</head>
+<body>
+<div class="spotlight s1"></div>
+<div class="spotlight s2"></div>
+
+
+<div class="spine-wrap"><div class="spine-track"></div><div class="spine-fill" id="spineFill"></div></div>
+
+<header>
+  <a href="index.html" style="text-decoration:none;">
+    <div class="logo"><img src="assets/logo.jpg" alt="DRDB Music">DRDB MUSIC</div>
+  </a>
+  <nav>
+    <a href="index.html">Catalogue</a>
+    <a href="index.html#abonnement">Abonnement</a>
+    <a href="index.html#evenements">Événements</a>
+    <a href="index.html#projets">Projets</a>
+    <a href="live.html">Live</a>
+    <a href="biographie.html" class="current">Biographie</a>
+    <a href="galerie.html">Galerie</a>
+    <a href="vip.html">Espace VIP</a>
+    <a href="distribution.html">Artistes</a>
+  </nav>
+</header>
+
+<main>
+
+  <section class="bio-hero">
+    <div class="arc"></div>
+    <div class="arc small"></div>
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--gold);display:block;margin:0 auto 14px;"><path d="M4 5.5c2-1 4.5-1.2 6.5 0v13c-2-1.2-4.5-1-6.5 0z"/><path d="M20 5.5c-2-1-4.5-1.2-6.5 0v13c2-1.2 4.5-1 6.5 0z"/></svg>
+  <span class="eyebrow">Artiste chanteur-compositeur-interprète — Cotonou, Bénin</span>
+    <h1 class="hero-title" id="heroTitle"></h1>
+    <p class="hero-lede">
+      Evann est un artiste béninois dont l'univers musical repose sur un concept qu'il a lui-même
+      façonné : <strong>l'afro love</strong>. Des mélodies douces, portées par la voix, chantées en
+      français et en fon — la langue de sa région d'origine, Abomey — pour une musique qui touche
+      autant qu'elle fait danser. Auteur-compositeur-interprète indépendant, Evann navigue avec
+      aisance entre plusieurs registres — pop, soul, rap, jazz — mais c'est dans l'afro love qu'il a
+      trouvé sa signature artistique et le cœur de son projet musical.
+    </p>
+  </section>
+
+  <section class="chapter reveal">
+    <div class="chapter-label mono">01 — Origines</div>
+    <div class="chapter-body">
+      <h2>Des racines dans le chant</h2>
+      <p>
+        La musique fait partie de la vie d'Evann depuis l'enfance. Il fait ses premiers pas dans le
+        chant choral à l'église Apostolique du Bénin, à Dokpa (Abomey), avant de rejoindre pendant
+        sept ans la chorale catholique Sainte-Thérèse-de-l'Enfant-Jésus — une période qu'il considère
+        comme fondatrice pour son éveil vocal. Autodidacte, il n'a jamais suivi de formation musicale
+        formelle : une passion qu'il partage avec son jeune frère, batteur professionnel.
+      </p>
+      <p>
+        Avant de percer sur la scène nationale, Evann s'est frotté à plusieurs concours et scènes
+        locales dans la région du Zou — à Bohicon, Covè et Zagnanado — où il affine son jeu et sa
+        présence scénique.
+      </p>
+    </div>
+  </section>
+
+  <section class="chapter reveal">
+    <div class="chapter-label mono">02 — 2018</div>
+    <div class="chapter-body">
+      <h2>Un Oui, le titre qui l'a révélé</h2>
+      <p>
+        C'est avec le titre <em>Un Oui</em>, sorti en 2018, qu'Evann connaît sa première grande
+        percée : classement national Top 10 et diffusion radio régulière.
+      </p>
+      <blockquote class="pull">Née d'une histoire personnelle, la chanson a été composée presque instinctivement, un soir, avant d'être offerte à la personne qui l'avait inspirée.</blockquote>
+      <p>
+        Son succès inattendu marque un tournant dans la trajectoire d'Evann, qui y puise la confiance
+        nécessaire pour poursuivre sa carrière musicale.
+      </p>
+      <p>
+        Parmi ses influences, Evann cite volontiers Singuila, son modèle international, ainsi que
+        plusieurs figures de la scène béninoise :
+      </p>
+      <div class="chips">
+        <span class="chip">Wilf Enigma</span>
+        <span class="chip">Jupiter</span>
+        <span class="chip">Ramou</span>
+        <span class="chip">Fani Sena</span>
+        <span class="chip">Sessimè</span>
+        <span class="chip">Richard Flash</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter reveal">
+    <div class="chapter-label mono">03 — Vision</div>
+    <div class="chapter-body">
+      <h2>Une musique porteuse de sens</h2>
+      <p>Pour Evann, il existe deux façons de faire de la musique :</p>
+      <div class="two-paths">
+        <div class="path">
+          <span class="tag mono">Celle qui</span>
+          <p>Fait danser.</p>
+        </div>
+        <div class="path chosen">
+          <span class="tag mono">Celle qu'il choisit</span>
+          <p>Éduque, touche le cœur et fait évoluer les comportements.</p>
+        </div>
+      </div>
+      <p style="margin-top:30px;">
+        Son ambition dépasse le simple divertissement : à travers ses chansons, il porte un message
+        de fierté africaine, invitant la jeunesse du continent à prendre conscience de ses richesses
+        et à se projeter avec confiance vers l'avenir.
+      </p>
+    </div>
+  </section>
+
+  <section class="chapter reveal">
+    <div class="chapter-label mono">04 — Scène</div>
+    <div class="chapter-body">
+      <h2>Sur scène et au-delà</h2>
+      <p>
+        Evann s'est produit aux côtés d'artistes tels que Blaaz, Sessimè, Black M et Sidiki Diabaté.
+        Il dirige également son propre groupe de danse, <strong style="color:var(--text);">Cadence
+        de Vie</strong>, qui accompagne ses créations et ses performances live.
+      </p>
+      <p>
+        Aujourd'hui, Evann poursuit son développement artistique à travers de nouveaux projets
+        musicaux, tout en construisant, à travers DRDB (Du Rien Sort Du Beau), un univers de marque
+        qui dépasse la seule musique.
+      </p>
+    </div>
+  </section>
+
+  <section class="closing reveal">
+    <div class="ring"></div>
+    <h2>« Du rien sort du beau »</h2>
+    <div class="slogan">DRDB — L'univers d'Evann</div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-brand"><img src="assets/logo.jpg" alt="DRDB Music">DRDB MUSIC</div>
+    <div class="footer-socials">
+    <a href="https://www.facebook.com/share/1E8RtoTnRX/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7H7.9V12h2.6V9.8c0-2.6 1.5-4 3.9-4 1.1 0 2.3.2 2.3.2v2.5h-1.3c-1.3 0-1.7.8-1.7 1.6V12h2.9l-.5 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
+    <a href="https://www.tiktok.com/@evannmonbb" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.5 2h-3v13.6a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.6a6 6 0 1 0 5 5.9V9.2c1.1.9 2.5 1.4 4 1.4V7.5c-2 0-3.7-1.6-4-3.5z"/></svg></a>
+    <a href="https://youtube.com/@evann3" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4L15.8 12z"/></svg></a>
+    <a href="https://wa.me/22961017683" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.2 7c-.2-.5-.4-.5-.5-.5h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.4zM12 2.2A9.8 9.8 0 0 0 2.2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.4a9.8 9.8 0 1 0 4.7-18.4z"/></svg></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 DRDB MUSIC — Tous droits réservés</span>
+    <a href="legal.html">Mentions légales &amp; CGV</a>
+    <span>Paiement : Moov Money · MTN Mobile Money</span>
+  </div>
+</footer>
+
+<script>
+  const API_BASE = "https://drdb-backend-gakr.onrender.com/api";
+  fetch(`${API_BASE}/track`, {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({ event: 'page_view', meta: { page: 'biographie' } })
+  }).catch(()=>{});
+
+  // Hero title — split into animated words
+  const title = "Une voix pour l'afro love";
+  const heroTitle = document.getElementById('heroTitle');
+  title.split(' ').forEach((word, i) => {
+    const span = document.createElement('span');
+    span.className = 'word';
+    span.textContent = word + '\u00A0';
+    span.style.animationDelay = (0.15 * i) + 's';
+    heroTitle.appendChild(span);
+  });
+
+  // Scroll-reveal for chapters
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('in');
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Scroll spine fill
+  const spineFill = document.getElementById('spineFill');
+  function updateSpine(){
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+    if (spineFill) spineFill.style.height = pct + '%';
+  }
+  window.addEventListener('scroll', updateSpine, { passive: true });
+  updateSpine();
+
+/* ---------------- sparkles scintillants ---------------- */
+function addSparkles(el, count){
+  if(!el) return;
+  el.style.position = el.style.position || 'relative';
+  for(let i=0;i<count;i++){
+    const sp = document.createElement('span');
+    sp.className = 'sparkle';
+    sp.style.top = (Math.random()*100)+'%';
+    sp.style.left = (Math.random()*100)+'%';
+    sp.style.animationDelay = (Math.random()*2.6)+'s';
+    sp.style.animationDuration = (2 + Math.random()*2)+'s';
+    el.appendChild(sp);
+  }
+}
+addSparkles(document.querySelector('.bio-hero'), 16);
+</script>
+<div class="social-float">
+  <a class="fb" href="https://www.facebook.com/share/1E8RtoTnRX/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7H7.9V12h2.6V9.8c0-2.6 1.5-4 3.9-4 1.1 0 2.3.2 2.3.2v2.5h-1.3c-1.3 0-1.7.8-1.7 1.6V12h2.9l-.5 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
+  <a class="tt" href="https://www.tiktok.com/@evannmonbb?_r=1&_t=ZG-99GWudDgtdo" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.5 2h-3v13.6a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.6a6 6 0 1 0 5 5.9V9.2c1.1.9 2.5 1.4 4 1.4V7.5c-2 0-3.7-1.6-4-3.5z"/></svg></a>
+  <a class="yt" href="https://youtube.com/@evann3?si=ZNKFNopkQ9Ulkwqg" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4L15.8 12z"/></svg></a>
+  <a class="wa" href="https://wa.me/22961017683" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.2 7c-.2-.5-.4-.5-.5-.5h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.4zM12 2.2A9.8 9.8 0 0 0 2.2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.4a9.8 9.8 0 1 0 4.7-18.4z"/></svg></a>
+</div>
+</body>
+</html>

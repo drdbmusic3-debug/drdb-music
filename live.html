@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live — Evann en direct sur YouTube et Facebook | DRDB Music</title>
+<meta name="description" content="Suis les concerts et sessions live d'Evann, artiste béninois, diffusés en direct sur YouTube et Facebook.">
+<meta name="keywords" content="Evann live, concert direct musique béninoise, DRDB live">
+<meta name="author" content="Evann / DRDB Music">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://drdb-music.netlify.app/live.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Live — Evann en direct sur YouTube et Facebook | DRDB Music">
+<meta property="og:description" content="Suis les concerts et sessions live d'Evann, artiste béninois, diffusés en direct sur YouTube et Facebook.">
+<meta property="og:url" content="https://drdb-music.netlify.app/live.html">
+<meta property="og:image" content="https://drdb-music.netlify.app/assets/og-image.jpg">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="DRDB Music">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Live — Evann en direct sur YouTube et Facebook | DRDB Music">
+<meta name="twitter:description" content="Suis les concerts et sessions live d'Evann, artiste béninois, diffusés en direct sur YouTube et Facebook.">
+<meta name="twitter:image" content="https://drdb-music.netlify.app/assets/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#000000; --surface:#141414; --surface2:#1F1F1F;
+    --cream:#FAFAFA; --muted:#8C8C8C; --line:#2E2E2E; --line-soft:#1D1D1D;
+    --neon:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--cream);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+  h1,h2{font-family:'Fraunces',serif;margin:0;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  a{color:inherit;}
+  @media (prefers-reduced-motion: reduce){ *{animation-duration:.01ms !important;transition-duration:.01ms !important;} }
+
+  header{
+    display:flex;align-items:center;justify-content:space-between;padding:22px 5vw;
+    position:sticky;top:0;z-index:30;backdrop-filter:blur(10px);background:rgba(0,0,0,0.8);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-size:18px;font-weight:700;white-space:nowrap;}
+  .logo img{height:34px;width:34px;border-radius:50%;object-fit:cover;}
+  nav a{text-decoration:none;color:var(--neon);opacity:0.85;font-size:13px;margin-left:20px;transition:opacity .2s;}
+  nav a:hover, nav a.current{opacity:1;text-shadow:0 0 2px #fff, 0 0 3px rgba(255,255,255,0.9), 0 0 14px rgba(193,80,46,0.45);}
+  @media(max-width:960px){ nav{display:none;} }
+
+  main{max-width:900px;margin:0 auto;padding:60px 5vw 90px;}
+
+  .live-badge{
+    display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,0.2);
+    border-radius:100px;padding:8px 18px;font-size:12px;letter-spacing:2px;text-transform:uppercase;
+    font-weight:700;margin-bottom:22px;
+  }
+  .live-badge.on{color:#ff4d4d;border-color:rgba(255,77,77,0.4);}
+  .live-badge .dot{width:8px;height:8px;border-radius:50%;background:currentColor;}
+  .live-badge.on .dot{animation:pulseDot 1.3s ease-in-out infinite;}
+  @keyframes pulseDot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.35;transform:scale(1.4);}}
+
+  h1{font-size:clamp(30px,5vw,46px);color:var(--neon);margin-bottom:10px;}
+  .subtitle{color:var(--muted);font-size:15px;max-width:520px;margin-bottom:34px;}
+
+  .stage{
+    background:var(--surface);border:1px solid rgba(255,255,255,0.08);border-radius:16px;
+    overflow:hidden;position:relative;
+  }
+  .player-wrap{position:relative;width:100%;aspect-ratio:16/9;background:#000;}
+  .player-wrap iframe, .player-wrap video{position:absolute;inset:0;width:100%;height:100%;border:none;}
+
+  .offline-state{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    height:100%;text-align:center;padding:30px;gap:14px;
+  }
+  .offline-state .ring{width:70px;height:70px;border:1px solid var(--line);border-radius:50%;position:relative;}
+  .offline-state .ring::before{content:'';position:absolute;inset:14px;border:1px solid var(--line-soft);border-radius:50%;}
+  .offline-state h3{font-size:18px;font-weight:600;}
+  .offline-state p{color:var(--muted);font-size:13.5px;max-width:340px;}
+
+  .ad-skip{
+    position:absolute;bottom:16px;right:16px;background:rgba(0,0,0,0.7);border:1px solid rgba(255,255,255,0.3);
+    color:#fff;padding:8px 16px;border-radius:100px;font-size:13px;cursor:pointer;display:none;
+  }
+  .ad-tag{
+    position:absolute;top:16px;left:16px;background:rgba(255,255,255,0.12);color:#fff;
+    padding:4px 12px;border-radius:100px;font-size:11px;letter-spacing:1px;text-transform:uppercase;
+  }
+
+  .stats-panel{
+    margin-top:24px;background:var(--surface);border:1px solid rgba(255,255,255,0.06);
+    border-radius:14px;padding:22px 24px;
+  }
+  .stats-panel h2{font-size:16px;margin-bottom:10px;}
+  .stats-panel p{color:var(--muted);font-size:13.5px;line-height:1.7;margin:0;}
+  .stats-panel a{color:var(--neon);text-decoration:underline;}
+
+  .follow-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;}
+  .follow-row a{
+    border:1px solid var(--line);border-radius:100px;padding:9px 20px;font-size:13px;
+    text-decoration:none;color:var(--cream);
+  }
+
+  footer{
+    padding:34px 5vw;border-top:1px solid var(--line-soft);color:#5C5C5C;font-size:13px;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+    background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%3Cg%20fill%3D%22%23E23B3B%22%20opacity%3D%220.8%22%3E%0A%20%20%3Ccircle%20cx%3D%2214%22%20cy%3D%2214%22%20r%3D%224%22/%3E%0A%20%20%3Ccircle%20cx%3D%2220%22%20cy%3D%2211%22%20r%3D%224%22/%3E%0A%20%20%3Ccircle%20cx%3D%2223%22%20cy%3D%2217%22%20r%3D%224%22/%3E%0A%20%20%3Ccircle%20cx%3D%2217%22%20cy%3D%2220%22%20r%3D%224%22/%3E%0A%20%20%3Ccircle%20cx%3D%2211%22%20cy%3D%2217%22%20r%3D%224%22/%3E%0A%20%20%3Ccircle%20cx%3D%2217%22%20cy%3D%2215%22%20r%3D%223%22%20fill%3D%22%238C1616%22/%3E%0A%3C/g%3E%0A%3Cg%20fill%3D%22%23F5F5F5%22%20opacity%3D%220.75%22%3E%0A%20%20%3Ccircle%20cx%3D%2258%22%20cy%3D%2255%22%20r%3D%223.4%22/%3E%0A%20%20%3Ccircle%20cx%3D%2263%22%20cy%3D%2252%22%20r%3D%223.4%22/%3E%0A%20%20%3Ccircle%20cx%3D%2266%22%20cy%3D%2257.5%22%20r%3D%223.4%22/%3E%0A%20%20%3Ccircle%20cx%3D%2261%22%20cy%3D%2260.5%22%20r%3D%223.4%22/%3E%0A%20%20%3Ccircle%20cx%3D%2255%22%20cy%3D%2257.5%22%20r%3D%223.4%22/%3E%0A%20%20%3Ccircle%20cx%3D%2261%22%20cy%3D%2256%22%20r%3D%222.4%22%20fill%3D%22%23C9C9C9%22/%3E%0A%3C/g%3E%0A%3C/svg%3E");background-repeat:repeat;
+  }
+  .site-footer .footer-top{
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px;
+    padding-bottom:24px;margin-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .footer-brand{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-weight:700;font-size:17px;}
+  .footer-brand img{width:30px;height:30px;border-radius:50%;object-fit:cover;}
+  .footer-socials{display:flex;gap:10px;}
+  .footer-socials a{
+    width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.07);
+    border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;
+    color:inherit;text-decoration:none;transition:transform .2s,background .2s;
+  }
+  .footer-socials a svg{width:16px;height:16px;fill:currentColor;}
+  .footer-socials a:hover{transform:scale(1.12);background:var(--gold);color:#1a1400;}
+  .footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12.5px;}
+  .footer-bottom a{color:inherit;text-decoration:underline;}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" style="text-decoration:none;"><div class="logo"><img src="assets/logo.jpg" alt="DRDB Music">DRDB MUSIC</div></a>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="index.html#catalogue">Catalogue</a>
+    <a href="live.html" class="current">Live</a>
+    <a href="biographie.html">Biographie</a>
+    <a href="galerie.html">Galerie</a>
+    <a href="vip.html">Espace VIP</a>
+  </nav>
+</header>
+
+<main>
+  <span class="live-badge" id="liveBadge"><span class="dot"></span><span id="liveBadgeText">Vérification…</span></span>
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--gold);display:block;margin:0 auto 14px;"><path d="M12 10a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/><path d="M12 14v8"/><path d="M8.5 7.5a5 5 0 0 0 0 7M15.5 7.5a5 5 0 0 1 0 7"/><path d="M5.5 4.5a9 9 0 0 0 0 13M18.5 4.5a9 9 0 0 1 0 13"/></svg>
+  <h1>DRDB Live</h1>
+  <p class="subtitle">Concerts, sessions surprises et coulisses en direct avec Evann — diffusés sur YouTube ou Facebook.</p>
+
+  <div class="stage">
+    <div class="player-wrap" id="playerWrap">
+      <div class="offline-state" id="offlineState">
+        <div class="ring"></div>
+        <h3>Pas de live en ce moment</h3>
+        <p>Reviens plus tard, ou suis les réseaux DRDB pour être prévenu(e) dès qu'un live démarre.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-panel">
+    <h2>Statistiques du live</h2>
+    <p>
+      Le nombre de spectateurs en direct, les likes et le chat s'affichent directement dans le lecteur
+      ci-dessus (fournis par YouTube ou Facebook). Pour les statistiques détaillées après le live
+      (durée moyenne de visionnage, provenance du public, revenus publicitaires), consulte
+      <a href="https://studio.youtube.com" target="_blank" rel="noopener">YouTube Studio</a> ou
+      <a href="https://business.facebook.com" target="_blank" rel="noopener">Meta Business Suite</a>.
+    </p>
+  </div>
+
+  <div class="follow-row">
+    <a href="https://youtube.com/@evann3?si=ZNKFNopkQ9Ulkwqg" target="_blank" rel="noopener">▶ YouTube</a>
+    <a href="https://www.facebook.com/share/1E8RtoTnRX/" target="_blank" rel="noopener">Facebook</a>
+    <a href="https://www.tiktok.com/@evannmonbb" target="_blank" rel="noopener">TikTok</a>
+    <a href="https://wa.me/22961017683" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-brand"><img src="assets/logo.jpg" alt="DRDB Music">DRDB MUSIC</div>
+    <div class="footer-socials">
+    <a href="https://www.facebook.com/share/1E8RtoTnRX/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7H7.9V12h2.6V9.8c0-2.6 1.5-4 3.9-4 1.1 0 2.3.2 2.3.2v2.5h-1.3c-1.3 0-1.7.8-1.7 1.6V12h2.9l-.5 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
+    <a href="https://www.tiktok.com/@evannmonbb" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.5 2h-3v13.6a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.6a6 6 0 1 0 5 5.9V9.2c1.1.9 2.5 1.4 4 1.4V7.5c-2 0-3.7-1.6-4-3.5z"/></svg></a>
+    <a href="https://youtube.com/@evann3" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4L15.8 12z"/></svg></a>
+    <a href="https://wa.me/22961017683" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.2 7c-.2-.5-.4-.5-.5-.5h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.4zM12 2.2A9.8 9.8 0 0 0 2.2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.4a9.8 9.8 0 1 0 4.7-18.4z"/></svg></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 DRDB MUSIC — Tous droits réservés</span>
+    <a href="legal.html">Mentions légales &amp; CGV</a>
+    <span>Paiement : Moov Money · MTN Mobile Money</span>
+  </div>
+</footer>
+
+<script>
+const API_BASE = "https://drdb-backend-gakr.onrender.com/api";
+function track(event, meta){
+  fetch(`${API_BASE}/track`, {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({ event, meta: meta || {} })
+  }).catch(()=>{});
+}
+track('page_view', { page: 'live' });
+
+async function loadLive(){
+  const badge = document.getElementById('liveBadge');
+  const badgeText = document.getElementById('liveBadgeText');
+  const wrap = document.getElementById('playerWrap');
+
+  let cfg;
+  try{
+    const res = await fetch(`${API_BASE}/live`);
+    cfg = await res.json();
+  }catch(e){
+    badgeText.textContent = 'Indisponible pour le moment';
+    return;
+  }
+
+  if(!cfg.isLive){
+    badge.classList.remove('on');
+    badgeText.textContent = 'Hors ligne';
+    return; // l'état "offline" déjà affiché par défaut reste visible
+  }
+
+  badge.classList.add('on');
+  badgeText.textContent = 'En direct';
+  track('live_view', { platform: cfg.platform });
+
+  function renderPlayer(){
+    let embedHtml = '';
+    if(cfg.platform === 'facebook' && cfg.facebookUrl){
+      const encoded = encodeURIComponent(cfg.facebookUrl);
+      embedHtml = `<iframe src="https://www.facebook.com/plugins/video.php?href=${encoded}&show_text=false&autoplay=true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>`;
+    } else if(cfg.platform === 'tiktok' && cfg.tiktokUrl){
+      embedHtml = `
+        <div class="offline-state">
+          <div class="ring"></div>
+          <h3>🔴 En direct sur TikTok</h3>
+          <p>TikTok ne permet pas d'afficher un live directement sur d'autres sites — regarde-le en un clic sur TikTok.</p>
+          <a href="${cfg.tiktokUrl}" target="_blank" rel="noopener" class="ad-skip" style="position:static;display:inline-block;">Regarder sur TikTok ▸</a>
+        </div>`;
+    } else if(cfg.videoId){
+      embedHtml = `<iframe src="https://www.youtube.com/embed/${cfg.videoId}?autoplay=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+    } else {
+      return; // rien de configuré, on laisse l'état hors-ligne
+    }
+    wrap.innerHTML = embedHtml;
+  }
+
+  if(cfg.adEnabled && cfg.adVideoUrl){
+    track('live_ad_view', {});
+    const adUrl = cfg.adVideoUrl.startsWith('http') ? cfg.adVideoUrl : `https://drdb-backend-gakr.onrender.com${cfg.adVideoUrl}`;
+    wrap.innerHTML = `
+      <span class="ad-tag">Publicité</span>
+      <video id="adPlayer" src="${adUrl}" autoplay muted playsinline></video>
+      <button class="ad-skip" id="adSkipBtn">Passer ▸</button>
+    `;
+    const skipBtn = document.getElementById('adSkipBtn');
+    const adPlayer = document.getElementById('adPlayer');
+    setTimeout(() => { skipBtn.style.display = 'block'; }, 5000);
+    skipBtn.onclick = renderPlayer;
+    adPlayer.onended = renderPlayer;
+  } else {
+    renderPlayer();
+  }
+}
+loadLive();
+</script>
+</body>
+</html>

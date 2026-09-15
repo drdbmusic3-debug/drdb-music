@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galerie photos — Evann en concert et en coulisses | DRDB Music</title>
+<meta name="description" content="Photos de scène, showcases et coulisses de l'artiste béninois Evann — DRDB Music.">
+<meta name="keywords" content="Evann photos, concert musique béninoise, artiste béninois scène">
+<meta name="author" content="Evann / DRDB Music">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://drdb-music.netlify.app/galerie.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Galerie photos — Evann en concert et en coulisses | DRDB Music">
+<meta property="og:description" content="Photos de scène, showcases et coulisses de l'artiste béninois Evann — DRDB Music.">
+<meta property="og:url" content="https://drdb-music.netlify.app/galerie.html">
+<meta property="og:image" content="https://drdb-music.netlify.app/assets/og-image.jpg">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="DRDB Music">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Galerie photos — Evann en concert et en coulisses | DRDB Music">
+<meta name="twitter:description" content="Photos de scène, showcases et coulisses de l'artiste béninois Evann — DRDB Music.">
+<meta name="twitter:image" content="https://drdb-music.netlify.app/assets/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#000000; --surface:#0D0D0D; --line:#2E2E2E; --line-soft:#1D1D1D;
+    --text:#FAFAFA; --muted:#8F8F8F; --muted2:#5C5C5C;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+  h1,h2{font-family:'Fraunces',serif;margin:0;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important;transition-duration:0.01ms !important;}
+  }
+
+  header{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px 6vw;position:sticky;top:0;z-index:30;
+    backdrop-filter:blur(10px);background:rgba(0,0,0,0.75);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-size:18px;font-weight:700;white-space:nowrap;}
+  .logo img{height:34px;width:34px;border-radius:50%;object-fit:cover;}
+  nav a{text-decoration:none;color:var(--muted);font-size:13px;margin-left:24px;letter-spacing:0.3px;transition:color .2s;}
+  nav a:hover{color:var(--text);}
+  nav a.current{color:var(--text);border-bottom:1px solid var(--text);padding-bottom:2px;}
+
+  .gal-hero{padding:80px 6vw 40px;position:relative;}
+  .gal-hero .arc{position:absolute;top:-40px;right:-100px;width:420px;height:420px;border:1px solid var(--line);border-radius:50%;opacity:0.5;}
+  .eyebrow{display:block;color:var(--muted);text-transform:uppercase;letter-spacing:2.5px;font-size:12px;font-weight:600;margin-bottom:20px;}
+  .gal-hero h1{font-size:clamp(38px,6vw,64px);font-weight:600;max-width:700px;position:relative;z-index:1;}
+  .gal-hero p{color:var(--muted);max-width:520px;margin-top:18px;font-size:15.5px;line-height:1.7;}
+
+  /* ---------- masonry grid ---------- */
+  .masonry{
+    columns:4 260px;column-gap:14px;padding:20px 6vw 100px;
+  }
+  @media(max-width:1100px){ .masonry{columns:3 220px;} }
+  @media(max-width:640px){ .masonry{columns:2 150px;column-gap:9px;} }
+
+  .tile{
+    break-inside:avoid;margin-bottom:14px;position:relative;overflow:hidden;
+    border-radius:3px;border:1px solid var(--line-soft);cursor:pointer;
+    opacity:0;transform:translateY(16px);
+    animation:tileIn .7s ease forwards;
+  }
+  @keyframes tileIn{to{opacity:1;transform:translateY(0);}}
+  .tile img{width:100%;height:auto;display:block;transition:transform .5s ease;}
+  .tile:hover img{transform:scale(1.05);}
+  .tile .cap{
+    position:absolute;left:0;right:0;bottom:0;padding:14px 12px 10px;
+    background:linear-gradient(180deg,transparent,rgba(0,0,0,0.85) 70%);
+    font-size:12.5px;color:#EDEBE5;letter-spacing:0.2px;
+    opacity:0;transform:translateY(6px);transition:opacity .25s, transform .25s;
+  }
+  .tile:hover .cap{opacity:1;transform:translateY(0);}
+
+  /* ---------- lightbox ---------- */
+  .lightbox{
+    position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:100;
+    display:none;align-items:center;justify-content:center;flex-direction:column;
+    padding:30px;
+  }
+  .lightbox.open{display:flex;}
+  .lightbox img{max-width:min(88vw,900px);max-height:72vh;border-radius:4px;object-fit:contain;}
+  .lightbox .cap{margin-top:18px;color:var(--muted);font-size:14px;text-align:center;}
+  .lb-close{position:absolute;top:24px;right:6vw;background:none;border:none;color:var(--text);font-size:22px;cursor:pointer;}
+  .lb-nav{
+    position:absolute;top:50%;transform:translateY(-50%);
+    background:none;border:1px solid var(--line);color:var(--text);
+    width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:18px;
+  }
+  .lb-prev{left:4vw;}
+  .lb-next{right:4vw;}
+  @media(max-width:640px){ .lb-nav{width:36px;height:36px;} .lb-prev{left:12px;} .lb-next{right:12px;} }
+
+  footer{
+    padding:34px 6vw;border-top:1px solid var(--line-soft);
+    color:var(--muted2);font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+    background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%3Cg%20fill%3D%22%23E23B3B%22%20opacity%3D%220.8%22%3E%0A%20%20%3Ccircle%20cx%3D%2214%22%20cy%3D%2214%22%20r%3D%224%22/%3E%0A%20%20%3Ccircle%20cx%3D%2220%22%20cy%3D%2211%22%20r%3D%224%22/%3E%0A%20%20%3Ccircle%20cx%3D%2223%22%20cy%3D%2217%22%20r%3D%224%22/%3E%0A%20%20%3Ccircle%20cx%3D%2217%22%20cy%3D%2220%22%20r%3D%224%22/%3E%0A%20%20%3Ccircle%20cx%3D%2211%22%20cy%3D%2217%22%20r%3D%224%22/%3E%0A%20%20%3Ccircle%20cx%3D%2217%22%20cy%3D%2215%22%20r%3D%223%22%20fill%3D%22%238C1616%22/%3E%0A%3C/g%3E%0A%3Cg%20fill%3D%22%23F5F5F5%22%20opacity%3D%220.75%22%3E%0A%20%20%3Ccircle%20cx%3D%2258%22%20cy%3D%2255%22%20r%3D%223.4%22/%3E%0A%20%20%3Ccircle%20cx%3D%2263%22%20cy%3D%2252%22%20r%3D%223.4%22/%3E%0A%20%20%3Ccircle%20cx%3D%2266%22%20cy%3D%2257.5%22%20r%3D%223.4%22/%3E%0A%20%20%3Ccircle%20cx%3D%2261%22%20cy%3D%2260.5%22%20r%3D%223.4%22/%3E%0A%20%20%3Ccircle%20cx%3D%2255%22%20cy%3D%2257.5%22%20r%3D%223.4%22/%3E%0A%20%20%3Ccircle%20cx%3D%2261%22%20cy%3D%2256%22%20r%3D%222.4%22%20fill%3D%22%23C9C9C9%22/%3E%0A%3C/g%3E%0A%3C/svg%3E");background-repeat:repeat;
+  }
+
+  /* ---------- social floating bar ---------- */
+  .social-float{
+    position:fixed;right:16px;top:50%;transform:translateY(-50%);z-index:150;
+    display:flex;flex-direction:column;gap:12px;
+  }
+  .social-float a{
+    width:44px;height:44px;border-radius:50%;
+    background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;text-decoration:none;transition:transform .2s, background .2s, border-color .2s;
+    backdrop-filter:blur(6px);
+  }
+  .social-float a svg{width:20px;height:20px;fill:currentColor;}
+  .social-float a:hover{transform:scale(1.12);border-color:transparent;}
+  .social-float a.fb:hover{background:#1877F2;}
+  .social-float a.tt:hover{background:#010101;box-shadow:0 0 0 2px #25F4EE, 0 0 0 4px #FE2C55;}
+  .social-float a.yt:hover{background:#FF0000;}
+  .social-float a.wa:hover{background:#25D366;}
+  @media(max-width:640px){
+    .social-float{
+      right:auto;left:0;top:auto;bottom:0;transform:none;
+      flex-direction:row;width:100%;justify-content:center;gap:10px;
+      padding:10px 0;background:rgba(0,0,0,0.85);backdrop-filter:blur(10px);
+      border-top:1px solid rgba(255,255,255,0.08);
+    }
+    .social-float a{width:38px;height:38px;}
+    .social-float a svg{width:17px;height:17px;}
+  }
+
+  /* ---- yellow accents + spotlights + sparkles ---- */
+  :root{ --neon: #D8B463; }
+  nav a{ color:var(--neon) !important; opacity:0.85; }
+  @keyframes textShimmer{
+    0%,100%{ text-shadow:0 0 1px #fff, 0 0 2px rgba(255,255,255,0.6), 0 0 8px rgba(193,80,46,0.35); }
+    50%{ text-shadow:0 0 1px #fff, 0 0 3px rgba(255,255,255,0.95), 0 0 16px rgba(193,80,46,0.65); }
+  }
+  nav a{ animation:textShimmer 3.4s ease-in-out infinite; }
+  .mobile-nav a{ animation:textShimmer 3.4s ease-in-out infinite; }
+
+  nav a:hover, nav a.current{ opacity:1; text-shadow:0 0 2px #fff, 0 0 10px rgba(193,80,46,0.7); }
+  .spotlight{
+    position:fixed;top:-10%;width:260px;height:130%;z-index:0;pointer-events:none;
+    background:conic-gradient(from 90deg at 50% 0%, transparent 0deg, rgba(255,255,255,0.16) 12deg, transparent 26deg);
+    transform-origin:top center;mix-blend-mode:screen;
+    animation:spotSweep 7s ease-in-out infinite;
+  }
+  .spotlight.s2{ right:8%; left:auto; animation-delay:-3.5s;
+    background:conic-gradient(from 90deg at 50% 0%, transparent 0deg, rgba(255,255,255,0.12) 12deg, transparent 26deg); }
+  .spotlight.s1{ left:8%; }
+  @keyframes spotSweep{
+    0%,100%{transform:rotate(-28deg);}
+    50%{transform:rotate(28deg);}
+  }
+  @media(max-width:760px){ .spotlight{display:none;} }
+  .sparkle{
+    position:absolute;width:3px;height:3px;border-radius:50%;
+    background:var(--neon);box-shadow:0 0 8px 2px rgba(255,255,255,0.55);
+    opacity:0;pointer-events:none;z-index:1;
+    animation:sparkleTwinkle 2.6s ease-in-out infinite;
+  }
+  @keyframes sparkleTwinkle{
+    0%,100%{opacity:0;transform:scale(0.4);}
+    50%{opacity:1;transform:scale(1.3);}
+  }
+
+  .gal-hero h1{ color:var(--neon); text-shadow:0 0 2px #fff, 0 0 3px rgba(255,255,255,0.9), 0 0 14px rgba(193,80,46,0.45); animation:textShimmer 3.4s ease-in-out infinite; }
+  .site-footer .footer-top{
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px;
+    padding-bottom:24px;margin-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .footer-brand{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-weight:700;font-size:17px;}
+  .footer-brand img{width:30px;height:30px;border-radius:50%;object-fit:cover;}
+  .footer-socials{display:flex;gap:10px;}
+  .footer-socials a{
+    width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.07);
+    border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;
+    color:inherit;text-decoration:none;transition:transform .2s,background .2s;
+  }
+  .footer-socials a svg{width:16px;height:16px;fill:currentColor;}
+  .footer-socials a:hover{transform:scale(1.12);background:var(--gold);color:#1a1400;}
+  .footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12.5px;}
+  .footer-bottom a{color:inherit;text-decoration:underline;}
+</style>
+</head>
+<body>
+<div class="spotlight s1"></div>
+<div class="spotlight s2"></div>
+
+
+<header>
+  <a href="index.html" style="text-decoration:none;">
+    <div class="logo"><img src="assets/logo.jpg" alt="DRDB Music">DRDB MUSIC</div>
+  </a>
+  <nav>
+    <a href="index.html">Catalogue</a>
+    <a href="index.html#evenements">Événements</a>
+    <a href="index.html#projets">Projets</a>
+    <a href="live.html">Live</a>
+    <a href="biographie.html">Biographie</a>
+    <a href="galerie.html" class="current">Galerie</a>
+    <a href="vip.html">Espace VIP</a>
+    <a href="distribution.html">Artistes</a>
+  </nav>
+</header>
+
+<section class="gal-hero">
+  <div class="arc"></div>
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--gold);display:block;margin:0 auto 14px;"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.5"/></svg>
+  <span class="eyebrow">Instants volés</span>
+  <h1>Galerie</h1>
+  <p>Scènes, coulisses et portraits — quelques moments qui racontent le parcours d'Evann, entre concerts, plateaux et vie de tous les jours.</p>
+</section>
+
+<div class="masonry" id="masonry"></div>
+
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose">✕</button>
+  <button class="lb-nav lb-prev" id="lbPrev">‹</button>
+  <img id="lbImg" src="" alt="">
+  <div class="cap" id="lbCap"></div>
+  <button class="lb-nav lb-next" id="lbNext">›</button>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-brand"><img src="assets/logo.jpg" alt="DRDB Music">DRDB MUSIC</div>
+    <div class="footer-socials">
+    <a href="https://www.facebook.com/share/1E8RtoTnRX/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7H7.9V12h2.6V9.8c0-2.6 1.5-4 3.9-4 1.1 0 2.3.2 2.3.2v2.5h-1.3c-1.3 0-1.7.8-1.7 1.6V12h2.9l-.5 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
+    <a href="https://www.tiktok.com/@evannmonbb" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.5 2h-3v13.6a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.6a6 6 0 1 0 5 5.9V9.2c1.1.9 2.5 1.4 4 1.4V7.5c-2 0-3.7-1.6-4-3.5z"/></svg></a>
+    <a href="https://youtube.com/@evann3" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4L15.8 12z"/></svg></a>
+    <a href="https://wa.me/22961017683" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.2 7c-.2-.5-.4-.5-.5-.5h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.4zM12 2.2A9.8 9.8 0 0 0 2.2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.4a9.8 9.8 0 1 0 4.7-18.4z"/></svg></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 DRDB MUSIC — Tous droits réservés</span>
+    <a href="legal.html">Mentions légales &amp; CGV</a>
+    <span>Paiement : Moov Money · MTN Mobile Money</span>
+  </div>
+</footer>
+
+<script>
+const API_BASE = "https://drdb-backend-gakr.onrender.com/api";
+fetch(`${API_BASE}/track`, {
+  method:'POST', headers:{'Content-Type':'application/json'},
+  body: JSON.stringify({ event: 'page_view', meta: { page: 'galerie' } })
+}).catch(()=>{});
+
+const PHOTOS = [
+  { src: "assets/gallery/photo-01.jpg", cap: "Fierté africaine, un soir de rassemblement" },
+  { src: "assets/gallery/photo-02.jpg", cap: "Portrait" },
+  { src: "assets/gallery/photo-03.jpg", cap: "Sur scène — showcase" },
+  { src: "assets/gallery/photo-04.jpg", cap: "Backstage" },
+  { src: "assets/gallery/photo-05.jpg", cap: "Live — ICPM" },
+  { src: "assets/gallery/photo-06.jpg", cap: "Moov Africa — Manvô Manvô" },
+  { src: "assets/gallery/photo-07.jpg", cap: "Sur scène — artiste invité" },
+  { src: "assets/gallery/photo-08.jpg", cap: "Cotonou, entre deux rendez-vous" },
+  { src: "assets/gallery/photo-09.jpg", cap: "Interview — Magic Partners" },
+  { src: "assets/gallery/photo-10.jpg", cap: "Portrait" },
+  { src: "assets/gallery/photo-11.jpg", cap: "Sur scène" },
+  { src: "assets/gallery/photo-12.jpg", cap: "Live" },
+  { src: "assets/gallery/photo-13.jpg", cap: "Face au public" },
+  { src: "assets/gallery/photo-14.jpg", cap: "Celtiis Summer Show" },
+  { src: "assets/gallery/photo-15.jpg", cap: "Portrait" },
+  { src: "assets/gallery/photo-16.jpg", cap: "Coulisses" }
+];
+
+const masonry = document.getElementById('masonry');
+PHOTOS.forEach((p, i) => {
+  const tile = document.createElement('div');
+  tile.className = 'tile';
+  tile.style.animationDelay = (i * 0.05) + 's';
+  tile.innerHTML = `<img src="${p.src}" alt="${p.cap}" loading="lazy"><div class="cap">${p.cap}</div>`;
+  tile.addEventListener('click', () => openLightbox(i));
+  masonry.appendChild(tile);
+});
+
+let current = 0;
+const lightbox = document.getElementById('lightbox');
+const lbImg = document.getElementById('lbImg');
+const lbCap = document.getElementById('lbCap');
+
+function openLightbox(i){
+  current = i;
+  renderLightbox();
+  lightbox.classList.add('open');
+  document.body.classList.add('overlay-active');
+}
+function renderLightbox(){
+  lbImg.src = PHOTOS[current].src;
+  lbImg.alt = PHOTOS[current].cap;
+  lbCap.textContent = PHOTOS[current].cap;
+}
+document.getElementById('lbClose').onclick = () => { lightbox.classList.remove('open'); document.body.classList.remove('overlay-active'); };
+document.getElementById('lbPrev').onclick = () => { current = (current - 1 + PHOTOS.length) % PHOTOS.length; renderLightbox(); };
+document.getElementById('lbNext').onclick = () => { current = (current + 1) % PHOTOS.length; renderLightbox(); };
+lightbox.addEventListener('click', (e) => { if(e.target === lightbox){ lightbox.classList.remove('open'); document.body.classList.remove('overlay-active'); } });
+document.addEventListener('keydown', (e) => {
+  if(!lightbox.classList.contains('open')) return;
+  if(e.key === 'Escape'){ lightbox.classList.remove('open'); document.body.classList.remove('overlay-active'); }
+  if(e.key === 'ArrowLeft') document.getElementById('lbPrev').click();
+  if(e.key === 'ArrowRight') document.getElementById('lbNext').click();
+});
+
+/* ---------------- sparkles scintillants ---------------- */
+function addSparkles(el, count){
+  if(!el) return;
+  el.style.position = el.style.position || 'relative';
+  for(let i=0;i<count;i++){
+    const sp = document.createElement('span');
+    sp.className = 'sparkle';
+    sp.style.top = (Math.random()*100)+'%';
+    sp.style.left = (Math.random()*100)+'%';
+    sp.style.animationDelay = (Math.random()*2.6)+'s';
+    sp.style.animationDuration = (2 + Math.random()*2)+'s';
+    el.appendChild(sp);
+  }
+}
+addSparkles(document.querySelector('.gal-hero'), 16);
+</script>
+<div class="social-float">
+  <a class="fb" href="https://www.facebook.com/share/1E8RtoTnRX/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7H7.9V12h2.6V9.8c0-2.6 1.5-4 3.9-4 1.1 0 2.3.2 2.3.2v2.5h-1.3c-1.3 0-1.7.8-1.7 1.6V12h2.9l-.5 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
+  <a class="tt" href="https://www.tiktok.com/@evannmonbb?_r=1&_t=ZG-99GWudDgtdo" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.5 2h-3v13.6a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.6a6 6 0 1 0 5 5.9V9.2c1.1.9 2.5 1.4 4 1.4V7.5c-2 0-3.7-1.6-4-3.5z"/></svg></a>
+  <a class="yt" href="https://youtube.com/@evann3?si=ZNKFNopkQ9Ulkwqg" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4L15.8 12z"/></svg></a>
+  <a class="wa" href="https://wa.me/22961017683" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.2 7c-.2-.5-.4-.5-.5-.5h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.4zM12 2.2A9.8 9.8 0 0 0 2.2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.4a9.8 9.8 0 1 0 4.7-18.4z"/></svg></a>
+</div>
+</body>
+</html>
