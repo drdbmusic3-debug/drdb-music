@@ -1,0 +1,102 @@
+backend:
+  name: git-gateway
+  branch: main # adapte si ta branche Netlify s'appelle autrement (ex: master)
+
+# Dossier où Decap CMS dépose les médias uploadés SANS media_folder spécifique par champ
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+# Affiche un aperçu en direct dans l'éditeur (optionnel mais confortable)
+publish_mode: simple
+
+locale: "fr"
+
+collections:
+  # ---------------------------------------------------------------
+  # CATALOGUE — un seul fichier data/catalogue.json contenant la liste
+  # ---------------------------------------------------------------
+  - name: "catalogue"
+    label: "🎵 Catalogue"
+    files:
+      - label: "Liste des chansons"
+        name: "songs"
+        file: "data/catalogue.json"
+        format: "json"
+        fields:
+          - label: "Chansons"
+            name: "songs"
+            widget: "list"
+            summary: "{{title}} — {{fields.artist}}"
+            fields:
+              - {label: "Titre", name: "title", widget: "string"}
+              - {label: "Artiste", name: "artist", widget: "string", default: "Evann"}
+              - {label: "Prix (FCFA)", name: "price", widget: "number", default: 500, value_type: "int"}
+              - {label: "Gratuit ?", name: "free", widget: "boolean", default: false, hint: "Coché = dans le catalogue gratuit. Décoché = dans l'Exclusivité (payant)."}
+              - {label: "Mettre en avant (grand encart)", name: "featured", widget: "boolean", default: false}
+              - {label: "Description (3 phrases)", name: "description", widget: "text", required: false}
+              - label: "Pochette"
+                name: "cover"
+                widget: "image"
+                media_folder: "/assets/covers"
+                public_folder: "/assets/covers"
+              - label: "Fichier audio"
+                name: "audio"
+                widget: "file"
+                media_folder: "/assets/audio-free"
+                public_folder: "/assets/audio-free"
+                required: false
+                hint: "Pour un titre gratuit : le fichier complet. Pour un titre exclusif : un simple extrait (le fichier complet payant reste géré séparément, voir note plus bas)."
+
+  # ---------------------------------------------------------------
+  # PROJETS — data/projets.json
+  # ---------------------------------------------------------------
+  - name: "projets"
+    label: "🤝 Projets"
+    files:
+      - label: "Liste des projets"
+        name: "list"
+        file: "data/projets.json"
+        format: "json"
+        fields:
+          - label: "Projets"
+            name: "projets"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
+              - {label: "Titre", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+              - label: "Image"
+                name: "image"
+                widget: "image"
+                required: false
+                media_folder: "/assets/projets"
+                public_folder: "/assets/projets"
+              - {label: "Lien (optionnel)", name: "link", widget: "string", required: false}
+
+  # ---------------------------------------------------------------
+  # PARAMÈTRES — data/parametres.json (fichier unique, pas de liste)
+  # ---------------------------------------------------------------
+  - name: "parametres"
+    label: "⚙️ Paramètres du site"
+    files:
+      - label: "Réglages généraux"
+        name: "settings"
+        file: "data/parametres.json"
+        format: "json"
+        fields:
+          - {label: "Nom de l'artiste", name: "artist_name", widget: "string", default: "Evann"}
+          - {label: "Bio courte", name: "bio", widget: "text", required: false}
+          - label: "Réseaux sociaux"
+            name: "socials"
+            widget: "object"
+            fields:
+              - {label: "Facebook", name: "facebook", widget: "string", required: false}
+              - {label: "TikTok", name: "tiktok", widget: "string", required: false}
+              - {label: "YouTube", name: "youtube", widget: "string", required: false}
+              - {label: "WhatsApp (lien wa.me)", name: "whatsapp", widget: "string", required: false}
+          - label: "Moyens de paiement"
+            name: "payment"
+            widget: "object"
+            fields:
+              - {label: "Numéro Moov Money", name: "moov", widget: "string", required: false}
+              - {label: "Numéro MTN Mobile Money", name: "mtn", widget: "string", required: false}

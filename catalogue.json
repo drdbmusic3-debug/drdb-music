@@ -1,0 +1,144 @@
+{
+  "songs": [
+    {
+      "title": "MON BB",
+      "artist": "Evann",
+      "price": 500,
+      "free": false,
+      "featured": true,
+      "description": "Le tout nouveau single d'Evann, plein de douceur et de tendresse. \"Mon Bb\" est une déclaration affectueuse dédiée à une personne chère. Un titre frais qui marque une nouvelle étape dans le parcours de l'artiste.",
+      "cover": "/assets/covers/mon-bb.jpg",
+      "audio": "/assets/audio-preview/mon-bb.mp3"
+    },
+    {
+      "title": "UN OUI",
+      "artist": "Evann",
+      "price": 500,
+      "free": true,
+      "featured": false,
+      "description": "\"Un Oui\" raconte une histoire d'amour née d'un instant de sincérité. Composée dans l'émotion du moment, cette chanson a marqué le vrai début du parcours musical d'Evann. Une mélodie douce qui célèbre le courage de dire oui à ce qui compte vraiment.",
+      "cover": "/assets/covers/un-oui.jpg",
+      "audio": "/assets/audio-free/un-oui.mp3"
+    },
+    {
+      "title": "SOLDAT",
+      "artist": "Evann",
+      "price": 500,
+      "free": true,
+      "featured": false,
+      "description": "Un titre énergique porté par une voix déterminée et des instrus percutants. \"Soldat\" parle de combativité et de la force de rester debout face aux épreuves de la vie. Une déclaration de résilience, dans l'esprit afro love d'Evann.",
+      "cover": "/assets/covers/soldat.jpg",
+      "audio": "/assets/audio-free/soldat.mp3"
+    },
+    {
+      "title": "REVIENS",
+      "artist": "Evann",
+      "price": 500,
+      "free": true,
+      "featured": false,
+      "description": "Un duo touchant avec Béni de Dieu autour du thème des retrouvailles. \"Reviens\" exprime le manque et l'espoir de reconstruire ce qui a été brisé. Une mélodie envoûtante qui mêle sonorités africaines et émotion pure.",
+      "cover": "/assets/covers/reviens.jpg",
+      "audio": "/assets/audio-free/reviens.mp3"
+    },
+    {
+      "title": "BOOM BOOM",
+      "artist": "Evann",
+      "price": 500,
+      "free": true,
+      "featured": false,
+      "description": "Un titre entraînant et sensuel, pensé pour faire danser. \"Boom Boom\" capture l'énergie d'une alchimie naissante entre deux personnes. Un rythme afro qui invite à se laisser porter par la musique.",
+      "cover": "/assets/covers/boom-boom.jpg",
+      "audio": "/assets/audio-free/boom-boom.mp3"
+    },
+    {
+      "title": "FEMME",
+      "artist": "Evann",
+      "price": 500,
+      "free": true,
+      "featured": false,
+      "description": "Un hommage vibrant à la force et à la beauté des femmes. \"Femme\" mêle puissance vocale et message d'admiration sincère. Une chanson qui célèbre la résilience et la grâce féminine.",
+      "cover": "/assets/covers/femme.jpg",
+      "audio": "/assets/audio-free/femme.mp3"
+    },
+    {
+      "title": "SORCIERE",
+      "artist": "Evann",
+      "price": 500,
+      "free": true,
+      "featured": false,
+      "description": "Un titre mystérieux et envoûtant, porté par une ambiance intrigante. \"Sorcière\" évoque une attirance irrésistible, presque magique. Entre séduction et fascination, une mélodie qui marque les esprits.",
+      "cover": "/assets/covers/sorciere.jpg",
+      "audio": "/assets/audio-free/sorciere.mp3"
+    },
+    {
+      "title": "SHAKE",
+      "artist": "Evann",
+      "price": 500,
+      "free": true,
+      "featured": false,
+      "description": "Un morceau léger et coloré, conçu pour l'été et la bonne humeur. \"Shake\" invite à danser sans se prendre au sérieux. Un titre solaire qui montre la polyvalence artistique d'Evann.",
+      "cover": "/assets/covers/shake.jpg",
+      "audio": "/assets/audio-free/shake.mp3"
+    },
+    {
+      "title": "CADEAU",
+      "artist": "Evann",
+      "price": 500,
+      "free": true,
+      "featured": false,
+      "description": "Une chanson chaleureuse dédiée à la beauté des liens sincères. \"Cadeau\" célèbre les femmes et les moments précieux de la vie. Un titre plein de gratitude porté par une mélodie douce.",
+      "cover": "/assets/covers/cadeau.jpg",
+      "audio": "/assets/audio-free/cadeau.mp3"
+    },
+    {
+      "title": "PROMESSE",
+      "artist": "Evann",
+      "price": 500,
+      "free": true,
+      "featured": false,
+      "description": "Un titre romantique autour de l'engagement et de la fidélité. \"Promesse\" raconte la tendresse d'un amour qui tient ses paroles. Une ambiance intime, portée par une voix sincère.",
+      "cover": "/assets/covers/promesse.jpg",
+      "audio": "/assets/audio-free/promesse.mp3"
+    },
+    {
+      "title": "AKLOUNON",
+      "artist": "Evann",
+      "price": 500,
+      "free": false,
+      "featured": false,
+      "description": "Un titre inspiré des racines béninoises d'Evann, en hommage à sa culture. \"Aklounon\" mêle tradition et modernité dans une même mélodie. Une célébration de l'identité et des racines africaines.",
+      "cover": "/assets/covers/aklounon.jpg",
+      "audio": "/assets/audio-preview/aklounon.mp3"
+    },
+    {
+      "title": "ALLO",
+      "artist": "Evann",
+      "price": 500,
+      "free": false,
+      "featured": false,
+      "description": "Une chanson pleine de nostalgie autour d'un appel qu'on hésite à passer. \"Allo\" évoque le manque et l'envie de renouer le contact. Un titre sensible porté par une mélodie épurée.",
+      "cover": "/assets/covers/allo.jpg",
+      "audio": "/assets/audio-preview/allo.mp3"
+    },
+    {
+      "title": "JE TE VOIS",
+      "artist": "Evann",
+      "price": 500,
+      "free": false,
+      "featured": false,
+      "description": "Un titre exclusif à l'ambiance intense et hypnotique. \"Je Te Vois\" parle de complicité et de connexion profonde entre deux âmes. Une production soignée qui met en valeur la voix d'Evann.",
+      "cover": "/assets/covers/je-te-vois.jpg",
+      "audio": "/assets/audio-preview/je-te-vois.mp3"
+    },
+    {
+      "title": "LA FLAMME",
+      "artist": "Evann",
+      "price": 500,
+      "free": false,
+      "featured": false,
+      "description": "Une ballade émotive sur la force de l'amour qui persiste. \"La Flamme\" évoque une passion qui continue de brûler malgré les épreuves. Un titre exclusif à l'atmosphère intense et sincère.",
+      "cover": "/assets/covers/la-flamme.jpg",
+      "audio": "/assets/audio-preview/la-flamme.mp3"
+    }
+  ]
+}

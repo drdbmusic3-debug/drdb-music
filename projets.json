@@ -1,0 +1,22 @@
+{
+  "projets": [
+    {
+      "title": "PROJET FEMME",
+      "description": "Un projet musical et social qui met en lumière la force et la voix des femmes, à travers des titres, des rencontres et des actions de terrain.",
+      "image": "",
+      "link": ""
+    },
+    {
+      "title": "DANSE CONTRE LA DÉLINQUANCE",
+      "description": "Des ateliers de danse portés par Cadence de Vie pour offrir à la jeunesse un espace d'expression positif, loin de la rue et de la délinquance.",
+      "image": "",
+      "link": ""
+    },
+    {
+      "title": "CONCERTS PRIVÉS",
+      "description": "Des prestations sur-mesure pour vos événements — mariages, entreprises, soirées privées. Contact et disponibilités sur demande.",
+      "image": "",
+      "link": ""
+    }
+  ]
+}
